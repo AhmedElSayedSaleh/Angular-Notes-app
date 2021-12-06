@@ -1,0 +1,24 @@
+<section id="signIn">
+  <div class="container">
+    <form [formGroup]="signInForm" (ngSubmit)="signInForm.valid&&formData()">
+      <div class="form w-50 m-auto">
+        <input [class.is-valid]="signInForm.controls.email.valid" formControlName="email" type="email"
+          placeholder="Enter your E-mail" class="form-control my-3">
+        <small *ngIf="signInForm.controls.email.invalid && signInForm.controls.email.touched" class="text-danger">*
+          E-mail must be required</small>
+
+        <input [class.is-valid]="signInForm.controls.password.valid" formControlName="password" type="password"
+          placeholder="Enter password" class="form-control my-3">
+        <small *ngIf="signInForm.controls.password.invalid && signInForm.controls.password.touched"
+          class="text-danger">** Password must be<br>
+          * - At least 8 characters long, max length anything<br>
+          * - Include at least 1 lowercase letter<br>
+          * - Include at least 1 capital letter</small>
+
+        <button
+          [ngStyle]="signInForm.invalid?{'backgroundColor':'gray','border-color':'gray','box-shadow':'none'}:{}" type="submit"
+          class="btn btn-info w-100">Sign In</button>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+<section id="signUp">
+  <div class="container">
+    <form [formGroup]="signUpForm" (ngSubmit)="signUpForm.valid&&formData()">
+      <div class="form w-50 m-auto">
+        <div class="row my-3">
+          <div class="col-md-6">
+            <input [class.is-valid]="signUpForm.controls.first_name.valid" formControlName="first_name" type="text" placeholder="Enter your first name" class="form-control mb-3">
+            <small *ngIf="signUpForm.controls.first_name.invalid&&signUpForm.controls.first_name.touched" class="text-danger">* First name must be between 3 and 8 characters</small>
+
+          </div>
+          <div class="col-md-6">
+            <input [class.is-valid]="signUpForm.controls.last_name.valid" formControlName="last_name" type="text" placeholder="Enter your last name" class="form-control">
+            <small *ngIf="signUpForm.controls.last_name.invalid&&signUpForm.controls.last_name.touched" class="text-danger">* Last name must be between 3 and 8 characters</small>
+          </div>
+        </div>
+        <input [class.is-valid]="signUpForm.controls.age.valid" formControlName="age" type="number" placeholder="Enter your age" class="form-control mt-3">
+        <small *ngIf="signUpForm.controls.age.invalid && signUpForm.controls.age.touched" class="text-danger">* Age must be above 16 years old</small>
+
+        <input [class.is-valid]="signUpForm.controls.email.valid" formControlName="email" type="email" placeholder="Enter your E-mail" class="form-control mt-3">
+        <small *ngIf="signUpForm.controls.email.invalid && signUpForm.controls.email.touched" class="text-danger">* E-mail must be required</small>
+
+        <input [class.is-valid]="signUpForm.controls.password.valid" formControlName="password" type="password" placeholder="Enter password" class="form-control mt-3">
+        <small *ngIf="signUpForm.controls.password.invalid && signUpForm.controls.password.touched" class="text-danger">** Password must be<br>
+          * - At least 8 characters long, max length anything<br>
+          * - Include at least 1 lowercase letter<br>
+          * - Include at least 1 capital letter</small>
+
+        <button [disabled]="signUpForm.invalid" [ngStyle]="signUpForm.invalid?{'backgroundColor': 'gray','border-color': 'gray'}:{}" type="submit" class="btn btn-info w-100 mt-3"><span *ngIf="!isClicked">Sign Up</span><span *ngIf="isClicked">Waiting...</span></button>
+        <div *ngIf="isSuccess" class="alert alert-success text-center" role="alert">
+          <strong class="text-capitalize">{{resMessage}}</strong>
+        </div>
+        <div *ngIf="isError" class="alert alert-danger text-center" role="alert">
+          <strong class="text-capitalize">{{resMessage}}</strong>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

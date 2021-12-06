@@ -1,0 +1,17 @@
+#signIn {
+  min-height: 100vh;
+  background-color: #222831;
+}
+
+.form {
+  min-height: 220px;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 6px 0 rgba(225,225,225,0.3);
+  backdrop-filter: saturate(180%) blur(5px);
+  border-radius: 10px;
+  padding: 20px;
+}
